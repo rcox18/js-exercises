@@ -1,8 +1,8 @@
 /*
-    Filename: js2-heehaw.js
+    Filename: heehaw.js
 	Robert Cox
 	1/15/2020
-	url: http://rcox.greenriverdev.com/IT328/js-exercises/js2-heehaw.html
+	url: http://rcox.greenriverdev.com/IT328/js-exercises/heehaw.html
 
     A console program that prints the numbers from 1 to 100 to the console.
     For any number evenly divisible by 3, print “Hee!” instead of the number.
