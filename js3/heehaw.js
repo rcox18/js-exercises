@@ -13,14 +13,25 @@
     an error message.
  */
 
+let userInput = document.getElementById("user-num");
+
+//enter is pressed after input, clicks the Go! button
+userInput.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("go-btn").click();
+    }
+});
+
 // when the Go! button is pressed
 document.getElementById("go-btn").onclick = function () {
     //clear result div
     document.getElementById("result").innerHTML = "";
     // get user input
-    let userNum = document.getElementById("user-num").value;
+    let userNum = userInput.value;
     // test for numeric value less than 1000 (keeps it reasonable)
-    if (isNaN(userNum) || userNum >= 1000) {
+    if (isNaN(userNum) || userNum >= 1000 || userNum === "") {
         //create and display an error message
         let newEl = document.createElement("p");
         newEl.innerHTML = "Please only numbers and less than 1000";
