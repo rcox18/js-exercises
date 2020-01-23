@@ -4,29 +4,35 @@
 	1/22/2020
 	url: http://rcox.greenriverdev.com/IT328/js-exercises/js3/heehaw.html
 
-    A console program that prints the numbers from 1 to 100 to the web-page.
-    For any number evenly divisible by 3, print “Hee!” instead of the number.
-    For any number evenly divisible by 5, print “Haw!” instead of the number.
+    A function heeHaw() takes any number as an input and prints
+    the numbers from 1 to that number to the web page.
+    For any number evenly divisible by 3, prints “Hee!” instead of the number.
+    For any number evenly divisible by 5, prints “Haw!” instead of the number.
     For any number evenly divisible by both 3 and 5, print “Hee Haw!” instead
-    of the number. A function heeHaw() takes any number as an input and prints
-    the numbers from 1 to that number to the web page, using the same rules as
-    the Chapter 2 exercise. If the user passes in an invalid parameter, print
+    of the number. If the user passes in an invalid parameter, print
     an error message.
  */
 
+// when the Go! button is pressed
 document.getElementById("go-btn").onclick = function () {
+    //clear result div
     document.getElementById("result").innerHTML = "";
+    // get user input
     let userNum = document.getElementById("user-num").value;
+    // test for numeric value less than 1000 (keeps it reasonable)
     if (isNaN(userNum) || userNum >= 1000) {
+        //create and display an error message
         let newEl = document.createElement("p");
         newEl.innerHTML = "Please only numbers and less than 1000";
         newEl.style.margin = "0";
         document.getElementById("result").appendChild(newEl);
     } else {
+        // good input, run the purpose of this exercise
         heeHaw(userNum);
     }
 };
 
+//details in the comment header ^^^
 function heeHaw(numInput) {
     for (let i = 1; i <= numInput; i++) {
         let newEl = document.createElement("p");
