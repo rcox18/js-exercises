@@ -1,0 +1,37 @@
+<!--
+    Filename: heehaw.html
+	Robert Cox
+	1/22/2020
+	url: http://rcox.greenriverdev.com/IT328/js-exercises/js3/heehaw.html
+
+	A function heeHaw() takes any number as an input and prints
+    the numbers from 1 to that number to the web page.
+    For any number evenly divisible by 3, prints “Hee!” instead of the number.
+    For any number evenly divisible by 5, prints “Haw!” instead of the number.
+    For any number evenly divisible by both 3 and 5, print “Hee Haw!” instead
+    of the number. If the user passes in an invalid parameter, print
+    an error message.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hee Haw!</title>
+</head>
+<body>
+<h1>EJS CH3 Review Ex. Hee Haw Function.</h1>
+<p>A function heeHaw() takes any number as an input and prints
+   the numbers from 1 to that number to the web page.
+   For any number evenly divisible by 3, prints “Hee!” instead of the number.
+   For any number evenly divisible by 5, prints “Haw!” instead of the number.
+   For any number evenly divisible by both 3 and 5, print “Hee Haw!” instead
+   of the number. If the user passes in an invalid parameter, print
+   an error message.</p>
+<label for="user-num">Choose a number < 1000:
+    <input type="text" id="user-num">
+</label>
+<input type="button" value="Go!" id="go-btn">
+<div id="result"></div>
+<script src="heehaw.js"></script>
+</body>
+</html>
