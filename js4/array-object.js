@@ -65,7 +65,7 @@ function printObject(object) {
         }
         output.innerHTML += "<br>";
     }
-
+    output.innerHTML += "<hr>";
     document.body.appendChild(output);
 }
 
