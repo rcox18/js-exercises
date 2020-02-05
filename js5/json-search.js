@@ -1,104 +1,21 @@
-let peopleList = JSON.stringify([
-        {
-            "firstName": "Jane",
-            "lastName": "Doe",
-            "sex": "f",
-            "born": "1876",
-            "died": "1956",
-            "father":
-                {
-                    "firstName": "Petreus",
-                    "lastName": "de Milliano"
-                },
-            "mother":
-                {
-                    "firstName": "Sophia",
-                    "lastName": "van Damme"
-                }
-        },
+/*
+    Filename: json-search.js
+	Robert Cox
+	2/5/2020
+	url: http://rcox.greenriverdev.com/IT328/js-exercises/js5/json-search.html
 
-        {
-            "firstName": "Jane",
-            "lastName": "Ramirez",
-            "sex": "f",
-            "born": "1102",
-            "died": "--",
-            "father":
-                {
-                    "firstName": "Themistocles",
-                    "lastName": "Merovech"
-                },
-            "mother":
-                {
-                    "firstName": "Amara",
-                    "lastName": "Floros"
-                }
-        },
-
-        {
-            "firstName": "Baby",
-            "lastName": "Bear",
-            "sex": "m",
-            "born": "1981",
-            "died": "--",
-            "father":
-                {
-                    "firstName": "Papa",
-                    "lastName": "Bear"
-                },
-            "mother":
-                {
-                    "firstName": "Mama",
-                    "lastName": "Bear"
-                }
-        },
-
-        {
-            "firstName": "Baby",
-            "lastName": "Rabbit",
-            "sex": "f",
-            "born": "1992",
-            "died": "--",
-            "father":
-                {
-                    "firstName": "Papa",
-                    "lastName": "Rabbit"
-                },
-            "mother":
-                {
-                    "firstName": "Mama",
-                    "lastName": "Rabbit"
-                }
-        },
-
-        {
-            "firstName": "Baby",
-            "lastName": "Doe",
-            "sex": "f",
-            "born": "1937",
-            "died": "1936",
-            "father":
-                {
-                    "firstName": "Papa",
-                    "lastName": "Buck"
-                },
-            "mother":
-                {
-                    "firstName": "Mama",
-                    "lastName": "Doe"
-                }
-        }
-    ]);
+    Processes user input then searches for the input in a list
+    and displays matching results.
+ */
 
 let peoplesListObj = JSON.parse(peopleList);
-
 let outPut = document.getElementById("result");
 let searchInput = document.getElementById("name-searched");
 let result = document.createElement("p");
 
 document.getElementById("submit").onclick = process;
 
-//enter is pressed after input, clicks the Go! button
+//enter is pressed after input, clicks the submit button
 searchInput.addEventListener("keyup", function(event) {
     // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
@@ -107,6 +24,7 @@ searchInput.addEventListener("keyup", function(event) {
     }
 });
 
+//Generates a text representation of a "person" object from peoplesList
 function generateResult(i) {
     let temp = document.createElement("p");
     temp.innerText =
@@ -122,43 +40,47 @@ function generateResult(i) {
     return temp;
 }
 
+//processes the input name on submit
 function process() {
+    //clear any existing output
     outPut.innerHTML = "";
-
+    //check for not empty input
     if (searchInput.value.trim() !== "") {
-
+        //clear old result and gather the input name(s)
         result.innerHTML = "";
         let fullName = searchInput.value.split(" ");
         let first = fullName[0].trim().toLowerCase();
         let last;
-
         if (fullName.length > 1) {
             last = fullName[1].trim().toLowerCase();
         }
 
+        //run through the people list
         for (let i = 0; i < peoplesListObj.length; i++) {
-
+            //if we have an exact (not case sensitive) match...
             if (peoplesListObj[i].firstName.toLowerCase() === first &&
                 peoplesListObj[i].lastName.toLowerCase() === last) {
-
-
+                //...append this person to the results
                 result.appendChild(generateResult(i));
 
+            //if only one name is added AND it matches a first OR last name
             } else if (last == null &&
                         peoplesListObj[i].firstName.toLowerCase() === first ||
                         peoplesListObj[i].lastName.toLowerCase() === first) {
-
+                //...append this person to the results
                 result.appendChild(generateResult(i));
             }
         }
-
+        //if after all of that the results are empty add no person found
         if (result.innerHTML === "") {
             let temp = document.createElement("p");
             temp.innerText = "No person found.";
             result.appendChild(temp);
         }
+        //add result to output
         outPut.appendChild(result);
     } else {
+        //if name was blank...
         outPut.innerHTML = "<h3>Need a name to search, try first and/or last</h3>";
     }
 }
